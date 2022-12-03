@@ -14,3 +14,5 @@
 2. META_INF/persistence.xml 설정 정보 조회
 3. EntityManagerFactory 클래스 생성
 4. EntityManager 생성
+
+### JPA에서 데이터 변경하는 작업은 Transaction 안에서 작업
