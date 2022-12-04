@@ -15,11 +15,26 @@ public class JpaMain {
 
         try {
             // code
+            // 비영속
             Member member = new Member();
-            member.setId(2L);
-            member.setName("HelloB");
+            member.setId(3L);
+            member.setName("HelloJPA");
 
+            // 영속
+            System.out.println("===BEFORE===");
             em.persist(member);
+            System.out.println("===AFTER===");
+
+            // 캐시에서 조회
+            Member findMember = em.find(Member.class, 1L);
+            System.out.println("findMember.getName() = " + findMember.getName());
+
+            findMember.setName("editJpa");
+            System.out.println("findMember.getName() = " + findMember.getName());
+
+            em.persist(findMember);
+
+            System.out.println("==================");
             tx.commit();
         } catch (Exception e) {
             tx.rollback();
